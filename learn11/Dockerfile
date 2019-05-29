@@ -2,4 +2,4 @@ FROM openjdk:8
 MAINTAINER rahul
 ARG JAR_FILE=target/learn11-0.0.1-SNAPSHOT.jar
 EXPOSE 8081
-ENTRYPOINT "java -jar JAR_FILE" 
+ENTRYPOINT ["java","-jar","target/learn11-0.0.1-SNAPSHOT.jar"] 
