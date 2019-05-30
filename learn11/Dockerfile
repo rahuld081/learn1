@@ -1,4 +1,7 @@
 FROM openjdk:8
 MAINTAINER rahul
 EXPOSE 8081
-RUN java -jar /home/eco-mail/git/learn1/learn11/target/learn11-0.0.1-SNAPSHOT.jar
+WORKDIR /home/rahul/
+ADD target/learn11-0.0.1-SNAPSHOT.jar learn1.jar
+EXPOSE 8080
+CMD java - jar learn1.jar
