@@ -1,7 +1,6 @@
 FROM openjdk:8
 MAINTAINER rahul
-WORKDIR /
-EXPOSE 8081
-ADD learn11-0.0.1-SNAPSHOT.jar learn1.jar
-EXPOSE 8081
-CMD java - jar learn1.jar
+ARG JAR_FILE=target/learn11-0.0.1-SNAPSHOT.jar
+RUN mkdir -pv /home/eco-mail/rahul/test && cd /home/eco-mail/rahul/test
+COPY {JAR_FILE} /home/eco-mail/rahul/test/learn1.jar
+ENTRYPOINT["java","-jar","/home/eco-mail/rahul/test/learn1.jar"]
