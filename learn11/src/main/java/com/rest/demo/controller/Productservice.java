@@ -1,4 +1,5 @@
 package com.rest.demo.controller;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,25 +29,25 @@ public class Productservice {
 		}
 
 	@RequestMapping(value = "/products/{id}", method = RequestMethod.DELETE )
-	public ResponseEntity<Object> delete(@PathVariable("id") String id){
+	public ResponseEntity<String> delete(@PathVariable("id") String id){
 	productRepo.remove(id);
 	return new ResponseEntity<>("Product Successfully Deleted",HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/products/{id}" , method = RequestMethod.PUT )
-	public ResponseEntity<Object> update(@PathVariable("id") String id, @RequestBody Products Products){
+	public ResponseEntity<String> update(@PathVariable("id") String id, @RequestBody Products Products){
 		productRepo.remove(id);
 		Products.setId(id);
 		productRepo.put(id,Products);
 		return new ResponseEntity<>("Product Successfully Updated",HttpStatus.OK);	
      }
 	@RequestMapping(value = "/products" , method = RequestMethod.POST)
-	public ResponseEntity<Object> AddProducts(@RequestBody Products product){
+	public ResponseEntity<String> AddProducts(@RequestBody Products product){
 		productRepo.put(product.getId(), product);
 		return new ResponseEntity<>("Product Added Successfully",HttpStatus.OK);	
 	}
 	@RequestMapping( value = "/products")
-	public ResponseEntity <Object> getProducts(){
+	public ResponseEntity<Collection<Products>> getProducts(){
 		return new ResponseEntity<>(productRepo.values(),HttpStatus.OK);
 	}
 }

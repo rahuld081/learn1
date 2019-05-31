@@ -35,26 +35,17 @@
 	</dependencies>
 
 	<build>
+	<defaultGoal>install</defaultGoal>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.6.1</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-		         </configuration>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		
 		    <plugin>
 			<groupId>com.spotify</groupId>
 			<artifactId>dockerfile-maven-plugin</artifactId>
-			<version>1.4.3</version>
-	
+			<version>1.2.0</version>
 			<configuration>
 			<repository>/home/eco-mail/distributor</repository>
 			<tag>latest</tag>
@@ -64,12 +55,13 @@
 			</configuration>
 			
 			<executions>
-				<execution>
+				<execution> 
 					<id>default</id>
 					<goals>
 						<goal>build</goal>
 						<goal>tag</goal>
 						<goal>push</goal>
+						
 					</goals>
 				</execution>
 			</executions>
