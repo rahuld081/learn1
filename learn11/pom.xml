@@ -35,7 +35,6 @@
 	</dependencies>
 
 	<build>
-	<defaultGoal>install</defaultGoal>
 		<plugins>
 			<plugin>
 			<groupId>org.springframework.boot</groupId>
@@ -47,7 +46,7 @@
 			<artifactId>dockerfile-maven-plugin</artifactId>
 			<version>1.4.9</version>
 			<configuration>
-			<repository>/home/eco-mail/learn11</repository>
+			<repository>rahuld08/${project.artifactId}</repository>
 			<tag>latest</tag>
 				<buildArgs>
 					<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
@@ -57,21 +56,15 @@
 			<executions>
 				<execution> 
 					<id>default</id>
+					<phase>install</phase>
 					<goals>
 						<goal>build</goal>
-						<goal>tag</goal>
 						<goal>push</goal>
-						
 					</goals>
 				</execution>
 			</executions>
-	</plugin>
-			</plugins>
-		<resources>
-				<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
+				</plugin>
+				</plugins>
+		<finalName>learn11</finalName>
      </build>
 </project>
